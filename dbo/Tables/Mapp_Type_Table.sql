@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Mapp_Type_Table] (
+    [MM_SEQ_ID]    INT           IDENTITY (1, 1) NOT NULL,
+    [MM_PLANT]     NVARCHAR (50) NULL,
+    [MM_SHOP]      NVARCHAR (50) NULL,
+    [MM_MAPPTYPE]  NVARCHAR (50) NULL,
+    [MM_IPM_PLANT] NVARCHAR (50) NULL
+);
+

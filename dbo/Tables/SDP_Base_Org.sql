@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[SDP_Base_Org] (
+    [SEQ_ID]            INT           IDENTITY (1, 1) NOT NULL,
+    [SBO_PLANT]         VARCHAR (50)  NOT NULL,
+    [SBO_PLANT2]        VARCHAR (50)  NULL,
+    [SBO_PLANT3]        VARCHAR (50)  NULL,
+    [SBO_ORDER_CREATOR] VARCHAR (50)  NOT NULL,
+    [SBO_CONTACT_TEL]   VARCHAR (50)  NOT NULL,
+    [SBO_MAIL_GROUP]    VARCHAR (150) NULL,
+    [update_user]       VARCHAR (50)  NULL,
+    [update_time]       DATETIME      NULL,
+    CONSTRAINT [PK_SDP_Base_Org] PRIMARY KEY CLUSTERED ([SEQ_ID] ASC),
+    CONSTRAINT [IX_SDP_Base_Org] UNIQUE NONCLUSTERED ([SBO_PLANT] ASC)
+);
+

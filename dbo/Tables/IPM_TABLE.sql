@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[IPM_TABLE] (
+    [IPM_SEQ_ID]    INT            IDENTITY (1, 1) NOT NULL,
+    [DATA_GEN_TIME] DATETIME       CONSTRAINT [DF_IPM_TABLE_DATA_GEN_TIME] DEFAULT (getdate()) NULL,
+    [FAC]           NVARCHAR (50)  NULL,
+    [SECTION]       NVARCHAR (50)  NULL,
+    [SYSTEM]        NVARCHAR (50)  NULL,
+    [MSG]           NVARCHAR (MAX) NULL,
+    [UPDATE_TIME]   DATETIME       NULL
+);
+

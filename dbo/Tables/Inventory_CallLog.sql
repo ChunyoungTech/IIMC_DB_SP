@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Inventory_CallLog] (
+    [ICL_SEQ_ID]       BIGINT       IDENTITY (1, 1) NOT NULL,
+    [ICL_IDD_SEQ_ID]   BIGINT       NOT NULL,
+    [ICL_IS_BOOKING]   BIT          NOT NULL,
+    [ICL_UPD_DATETIME] DATETIME     NULL,
+    [ICL_UPD_USER]     VARCHAR (50) NULL,
+    CONSTRAINT [PK_Inventory_CallLog] PRIMARY KEY CLUSTERED ([ICL_SEQ_ID] ASC)
+);
+

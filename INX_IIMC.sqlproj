@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>INX_IIMC</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{c27b903f-ff22-42ee-a480-de115cdda13e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>INX_IIMC</RootNamespace>
+    <AssemblyName>INX_IIMC</AssemblyName>
+    <ModelCollation>1028,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Chinese_Taiwan_Stroke_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\SDP_VW_SRM_CALLED_ORDERS_GCIC_ALLOCATE.sql" />
+    <Build Include="dbo\Tables\Inventory_BaseData_E.sql" />
+    <Build Include="dbo\Tables\SDP_VW_SRM_CALLED_ORDERS_GCIC_HIS_ALLOCATE.sql" />
+    <Build Include="dbo\Tables\Inventory_BaseData.sql" />
+    <Build Include="dbo\Tables\Material_Receipt.sql" />
+    <Build Include="dbo\Tables\SDP_Order_Master.sql" />
+    <Build Include="dbo\Tables\Use_Budget.sql" />
+    <Build Include="dbo\Tables\Inventory_MaterialMapping.sql" />
+    <Build Include="dbo\Tables\Mapp_Type_Table.sql" />
+    <Build Include="dbo\Tables\CIC_BASE_TABLE.sql" />
+    <Build Include="dbo\Tables\IPM_TABLE.sql" />
+    <Build Include="dbo\Tables\MappMessage.sql" />
+    <Build Include="dbo\Tables\kpi_coefficient_water.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\kpi_yield_water.sql" />
+    <Build Include="dbo\Tables\Permission.sql" />
+    <Build Include="dbo\Tables\ItemNumberCorresponding.sql" />
+    <Build Include="dbo\Tables\kpi_coefficient.sql" />
+    <Build Include="dbo\Tables\Budget_Table_Water.sql" />
+    <Build Include="dbo\Tables\Budget_Table.sql" />
+    <Build Include="dbo\Tables\IDMC_Table_Temp.sql" />
+    <Build Include="dbo\Tables\Err_Message_Txt.sql" />
+    <Build Include="dbo\Tables\SDP_Exclusion_Date.sql" />
+    <Build Include="dbo\Tables\SDP_ORDER_Log.sql" />
+    <Build Include="dbo\Tables\Meterial_Table_Log.sql" />
+    <Build Include="dbo\Tables\Material_Base_Data.sql" />
+    <Build Include="dbo\Tables\SDP_VENDOR.sql" />
+    <Build Include="dbo\Tables\SDP_Exclusion_Date_Log.sql" />
+    <Build Include="dbo\Tables\ORG.sql" />
+    <Build Include="dbo\Tables\Time_Set.sql" />
+    <Build Include="dbo\Tables\Inventory_DailyDataLog.sql" />
+    <Build Include="dbo\Tables\sys_month.sql" />
+    <Build Include="dbo\Tables\sys_year.sql" />
+    <Build Include="dbo\Tables\SDP_PO_TABLE.sql" />
+    <Build Include="dbo\Tables\kpi_yield.sql" />
+    <Build Include="dbo\Tables\FactorySetting.sql" />
+    <Build Include="dbo\Tables\Inventory_BaseDataLog.sql" />
+    <Build Include="dbo\Tables\TAG_MAPPING.sql" />
+    <Build Include="dbo\Tables\Inventory_CallLog.sql" />
+    <Build Include="dbo\Tables\Inventory_DailyData.sql" />
+    <Build Include="dbo\Tables\SDP_VW_SRM_CALLED_ORDERS_GCIC.sql" />
+    <Build Include="dbo\Tables\SDP_VW_SRM_CALLED_ORDERS_GCIC_HIS.sql" />
+    <Build Include="dbo\Tables\SDP_VW_SRM_CALLED_ORDERS_GCIC_TEMP.sql" />
+    <Build Include="dbo\Tables\IDMC_Table.sql" />
+    <Build Include="dbo\Tables\SDP_Base_Org.sql" />
+    <Build Include="dbo\Tables\Material_Receipt_Control.sql" />
+    <Build Include="dbo\Tables\Remark_Table.sql" />
+    <Build Include="dbo\Tables\IDMC_Table_Record.sql" />
+    <Build Include="dbo\Tables\Inventory_BookingLog.sql" />
+    <Build Include="dbo\Tables\LOCAL_LIST.sql" />
+    <Build Include="dbo\Tables\Inventory_BOM.sql" />
+    <Build Include="dbo\Tables\SDP_VW_ASN_DATA_GCIC.sql" />
+    <Build Include="dbo\Tables\Inventory_ReceiptMapping.sql" />
+    <Build Include="dbo\Tables\Material_Table.sql" />
+    <Build Include="dbo\Tables\Fill_Mapping.sql" />
+    <Build Include="dbo\Tables\CIC_TABLE.sql" />
+    <Build Include="dbo\Tables\ReasonCode.sql" />
+    <Build Include="dbo\Views\vMaterialCurrentTotal_old.sql" />
+    <Build Include="dbo\Views\View_BOM_MONTH_USEAGE.sql" />
+    <Build Include="dbo\Views\v_Filling.sql" />
+    <Build Include="dbo\Views\v_IFP_MaterialOrder.sql" />
+    <Build Include="dbo\Views\v_Filling_Auto.sql" />
+    <Build Include="dbo\Views\v_IFM_ENERGY_DAILY_REPORT_NEW.sql" />
+    <Build Include="dbo\Views\v_IdmcTable_OLD.sql" />
+    <Build Include="dbo\Views\vMaterial_Base_Data.sql" />
+    <Build Include="dbo\Views\v_Remark_Table.sql" />
+    <Build Include="dbo\Views\View_Material_Table.sql" />
+    <Build Include="dbo\Views\vMaterialCurrent.sql" />
+    <Build Include="dbo\Views\vMaterialTotalQty.sql" />
+    <Build Include="dbo\Views\v_UsePrice_Budget.sql" />
+    <Build Include="dbo\Views\View_BOM_USEAGE_MIS.sql" />
+    <Build Include="dbo\Views\V_Inventory_BaseData_OLD.sql" />
+    <Build Include="dbo\Views\v_kpi_water_step1.sql" />
+    <Build Include="dbo\Views\v_kpi_water_step2.sql" />
+    <Build Include="dbo\Views\v_AutoFilling.sql" />
+    <Build Include="dbo\Views\vMeterial_Month_Amount.sql" />
+    <Build Include="dbo\Views\vMaterialCurrentTotal.sql" />
+    <Build Include="dbo\Views\vWeekTotalQty.sql" />
+    <Build Include="dbo\Views\v_FillPrice.sql" />
+    <Build Include="dbo\Views\v_UsePrice.sql" />
+    <Build Include="dbo\Views\vWeekTotalQty3.sql" />
+    <Build Include="dbo\Views\vMaterialCurrent3.sql" />
+    <Build Include="dbo\Views\V_ItemNumberCorresponding.sql" />
+    <Build Include="dbo\Views\v_IdmcTable.sql" />
+    <Build Include="dbo\Views\v_kpi_step1.sql" />
+    <Build Include="dbo\Views\v_kpi_step2.sql" />
+    <Build Include="dbo\Views\vWeekAmount.sql" />
+    <Build Include="dbo\Views\v_ManualInCoefficient.sql" />
+    <Build Include="dbo\Views\v_F8DataSetting.sql" />
+    <Build Include="dbo\Views\vMaterialFACTotal.sql" />
+    <Build Include="dbo\Views\vBOM_Month_Amount.sql" />
+    <Build Include="dbo\Views\vBOM_USEAGE.sql" />
+    <Build Include="dbo\Views\v_BaseCoefficient.sql" />
+    <Build Include="dbo\Views\v_Coefficient.sql" />
+    <Build Include="dbo\Views\v_ManualIn.sql" />
+    <Build Include="dbo\Views\vMeterial_Month_Amount2.sql" />
+    <Build Include="dbo\Views\vMeterial_Month_Amount_p.sql" />
+    <Build Include="dbo\Views\vWeekTotalQty2.sql" />
+    <Build Include="dbo\Views\vMaterialCurrent2.sql" />
+    <Build Include="dbo\Views\View_EP_Data.sql" />
+    <Build Include="dbo\Views\v_ManualInTemp.sql" />
+    <Build Include="dbo\Views\v_CoefficientTemp.sql" />
+    <Build Include="dbo\Views\View_BOM_USEAGE.sql" />
+    <Build Include="dbo\Views\V_Inventory_BaseData.sql" />
+    <Build Include="dbo\Views\V_Plant.sql" />
+    <Build Include="dbo\Views\vBomData.sql" />
+    <Build Include="Security\MIS.sql" />
+    <Build Include="Security\INX_MIS.sql" />
+    <Build Include="Security\GCIC_WEB.sql" />
+    <Build Include="Security\CIC.sql" />
+    <Build Include="Security\CY.sql" />
+    <Build Include="Security\admin.sql" />
+    <Build Include="Security\GCIC.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Functions\GetOrderID.sql" />
+    <Build Include="dbo\Functions\fun_mapp_filling_price_budget_ratio.sql" />
+    <Build Include="dbo\Functions\fun_mapp_usage_alert.sql" />
+    <Build Include="dbo\Functions\FUN_StringSplit.sql" />
+    <Build Include="dbo\Functions\FUN_ReasonCode_Q.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_BaseData_List.sql" />
+    <Build Include="dbo\Functions\FUN_ReasonCode_Query.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_BaseData_Q.sql" />
+    <Build Include="dbo\Functions\FUN_RemarkTable_Q.sql" />
+    <Build Include="dbo\Functions\fun_mapp_scheduled_delivery_in_days_n.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_DailyData_List.sql" />
+    <Build Include="dbo\Functions\FUN_ItemNumberCorresponding_Q.sql" />
+    <Build Include="dbo\Functions\FUN_SplitRatioReportData_Q.sql" />
+    <Build Include="dbo\Functions\FUN_SplitRatioReportBaseData_Q.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_BaseData_SystemList.sql" />
+    <Build Include="dbo\Functions\FUN_CallingManagementList.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_DailyData_List_old.sql" />
+    <Build Include="dbo\Functions\fun_mapp_filling_info.sql" />
+    <Build Include="dbo\Functions\FUN_BookingList.sql" />
+    <Build Include="dbo\Functions\fun_mapp_scheduled_delivery_in_days.sql" />
+    <Build Include="dbo\Functions\fun_mapp_stock_left_days.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_DailyDatag_Q.sql" />
+    <Build Include="dbo\Functions\fun_mapp_usage_average.sql" />
+    <Build Include="dbo\Functions\fun_mapp_schdule_alert.sql" />
+    <Build Include="dbo\Functions\FUN_Inventory_DailyData_Q.sql" />
+    <Build Include="dbo\Functions\FUN_ObsoleteReviewList.sql" />
+    <Build Include="dbo\Functions\FUN_OrderFailureRecordList.sql" />
+    <Build Include="dbo\Functions\FUN_ReasonCode_List.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ReasonCodeMultiple_Save.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaAlO2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_3DT465.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ipm_12_schedule_alert_yesterday.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterCourseAllocate.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ipm_6_stock_smaller_than_1days.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterScheduleListAllocate.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ipm_7_stock_smaller_than_0days.sql" />
+    <Build Include="dbo\Stored Procedures\sp_SDP_ORDER_TO_HIS.sql" />
+    <Build Include="dbo\Stored Procedures\sp_IPM_Daily_Alert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_ZC822.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Budget_Report.sql" />
+    <Build Include="dbo\Stored Procedures\sp_month_budget.sql" />
+    <Build Include="dbo\Stored Procedures\sp_SDP_Order_Master_BlackMapp.sql" />
+    <Build Include="dbo\Stored Procedures\sp_AutoOrderAdd_test.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Mapp_Daily_Alert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Mapp_Daily_Alert_evening.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_CIC_Table_FABC.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Amount_Calculate_FABC.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_13_po_exhausted.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Amount_Calculate_FAB2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_14_VENDOR_Wait_Confirm.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ItemNumberCorresponding_Stop.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ItemNumberCorresponding_Save.sql" />
+    <Build Include="dbo\Stored Procedures\USP_Inventory_ReceiptMapping_Save.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterCourseWaste.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterScheduleListWaste.sql" />
+    <Build Include="dbo\Stored Procedures\sp_MappMessage_SENT.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_FT_Amount.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_polymer_water.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_PAC.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_polymer_plus.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_TMAH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Create_Daily_Material_Data.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_polymer_F.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_PAC.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_Na2S.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_Na2S2O3.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_CIC_Table_FAB7.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_HCl_GAS.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_CaCL2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetAmountPi.sql" />
+    <Build Include="dbo\Stored Procedures\sp_DailyInventory.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_H2SO4.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_DehydrationPolymer.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_CH3OH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_FeCl2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetAmountSq.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_anti_corrosion.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_H2SO4.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_HCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetAmount.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_Methanol40.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_CaCl2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetBom.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_Na2S.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_Na2S2O3.sql" />
+    <Build Include="dbo\Stored Procedures\sp_AutoOrderAdd.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_NaOCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportDayAmount.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_NaOH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_NaOCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportDayFill.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_HCl_water.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_NegativePolymer.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_H2SO4.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportMonthAmount.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Amount_Calculate_FAB7.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportMonthFill.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOH_F.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOH_water.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_CIC_Table_FAB2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetMonthAmount.sql" />
+    <Build Include="dbo\Stored Procedures\sp_insert_IPM.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetMonthBom.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetBom_Unit_Price.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetBom_Cost.sql" />
+    <Build Include="dbo\Stored Procedures\sp_SDP_Order_Master_AutoClose.sql" />
+    <Build Include="dbo\Stored Procedures\Comparison_SDP_Temp.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Amount_Calculate_FAB3.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_ZC822.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_polymer.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_polymer_plus.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_CaCL2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_CH3OH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_DEFOAMER.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Budget_Table_ADD.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_FECL2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_kpi_Report.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_H2SO4.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_HCL.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_NaCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_1_day_larger_than_week.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_NaOCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_NaOH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_salt.sql" />
+    <Build Include="dbo\Stored Procedures\sp_SDP_Order_Master_CancelMapp.sql" />
+    <Build Include="dbo\Stored Procedures\USP_QueryMaterial_SG.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportDayAmount_price.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportDayFill_price.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportMonthAmount_price.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ReportMonthFill_price.sql" />
+    <Build Include="dbo\Stored Procedures\sp_AutoOrderClosed.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_Gateway_FAB2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_DailyInventory_WarningMapp.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_Gateway_FAB7.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_Gateway_FABC.sql" />
+    <Build Include="dbo\Stored Procedures\sp_DailyInventory_CancelCall.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_Gateway_FAB3.sql" />
+    <Build Include="dbo\Stored Procedures\sp_DailyInventory_Book.sql" />
+    <Build Include="dbo\Stored Procedures\sp_recalculate.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetTotalAndComponent.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_HCL.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterScheduleList.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Tool_1.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetOrderMasterCourse.sql" />
+    <Build Include="dbo\Stored Procedures\sp_AddRemark.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_Filling_Data.sql" />
+    <Build Include="dbo\Stored Procedures\Insert_SDP_Temp.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_4_stock_smaller_than_2days.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_5_day_larger_than_week_20.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_6_stock_smaller_than_1days.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_7_stock_smaller_than_0days.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Daily_Insert_CIC_Table.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_8_budget_ratio_over90.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_9_budget_ratio_over100.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_10_schedule_alert_previous.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_11_schedule_alert_today.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_12_schedule_alert_yesterday.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB3_Chemical_NaOH.sql" />
+    <Build Include="dbo\Stored Procedures\sp_mapp_1_day_larger_than_week_10.sql" />
+  </ItemGroup>
+</Project>

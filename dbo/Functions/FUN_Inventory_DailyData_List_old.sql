@@ -1,0 +1,129 @@
+﻿
+
+CREATE Function [dbo].[FUN_Inventory_DailyData_List_old]
+(
+	 @strPlant varchar(50),			/*廠區*/
+     @strDate varchar(10)			/*結算日期*/
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+
+SELECT IBD_SEQ_ID,
+	SBO_PLANT2 AS IBD_PLANT,
+	IBD_SHOP,
+	IBD_SYSTEM,
+	IBD_MATERIAL,
+	IBD_BOM_NO,
+	IBD_TYPE,
+	IBD_FAB_UNIT,
+	IBD_MAX_LIMIT,
+	IBD_UNIT,
+	IBDE_CalcGroup,
+	ROUND(IDD_ONLINE_INVENTORY_AMT,2) IDD_ONLINE_INVENTORY_AMT,
+	IDD_CLAC_AVG,
+	IDD_INVENTORY_AMT,
+	IBD_BOOKING_LIMIT,
+	IBD_FEED_AMT,
+	(CASE 
+		WHEN IBD_SYSTEM='GMSG' AND IBD_TYPE='鋼瓶' THEN ROUND(IDD_ReplacementCycle,2)
+		ELSE
+			CASE IDD_CLAC_AVG 
+				WHEN 0 THEN 999
+				ELSE ROUND(IBD_FEED_AMT/IDD_CLAC_AVG,2)
+			END
+	 END) IDD_ReplacementCycle,--更換週期
+	(CASE 
+		WHEN IBD_SYSTEM='GMSG' AND IBD_TYPE='鋼瓶' THEN
+		 CASE 
+			WHEN IDD_CLAC_AVG = 0  THEN 999 
+			WHEN (IDD_ONLINE_INVENTORY_AMT-IBDE_CylinderQuantity)<0 THEN 0 
+			ELSE ROUND((IDD_ONLINE_INVENTORY_AMT-IBDE_CylinderQuantity)/IDD_CLAC_AVG,2) 
+		 END
+		ELSE
+		 CASE 
+			WHEN IDD_CLAC_AVG = 0 THEN 999 
+			WHEN (IDD_ONLINE_INVENTORY_AMT-IBD_BOOKING_LIMIT)<0 THEN 0
+			ELSE ROUND((IDD_ONLINE_INVENTORY_AMT-IBD_BOOKING_LIMIT)/IDD_CLAC_AVG,2) 
+		 END
+	 END) IDD_AvailableDays,--切邊倒數
+	IDD_PUT_IN_AMT,--昨日入料量
+	IDD_CHANGE_AMT,--昨日更換量
+	(CASE IBD_AUTO_ORDER WHEN 'N' THEN 'Y' ELSE 'N' END) IBD_AUTO_ORDER,--隔離
+	IDD_SEQ_ID
+FROM
+
+(SELECT	a.IBD_SEQ_ID,
+		c.SBO_PLANT2,
+		a.IBD_SYSTEM,
+		a.IBD_SHOP,
+		(case when IBD_MATERIAL2 is null or IBD_MATERIAL2='' then IBD_MATERIAL else IBD_MATERIAL2 end)IBD_MATERIAL,
+		a.IBD_BOM_NO,
+		irm.IRM_MTRL_NO IBD_TYPE,
+		A.IBD_FAB_UNIT,
+		A.IBD_MAX_LIMIT,
+		A.IBD_UNIT,
+		b.IBDE_CalcGroup,
+		SUM(CASE  
+					WHEN a.IBD_SYSTEM='GMSG' AND b.[IBDE_TAG_SITE] =1 THEN CASE WHEN isnumeric(I_Value1)=0 THEN 0 ELSE CASE WHEN(I_Value1-IBDE_MinValue)<0 THEN 0 ELSE ((I_Value1-IBDE_MinValue)*IBDE_CylinderQuantity)/(IBDE_MaxValue-IBDE_MinValue) END END
+					WHEN a.IBD_SYSTEM='GMSG' AND b.[IBDE_TAG_SITE] =2 THEN CASE WHEN isnumeric(I_Value2)=0 THEN 0 ELSE CASE WHEN(I_Value2-IBDE_MinValue)<0 THEN 0 ELSE ((I_Value2-IBDE_MinValue)*IBDE_CylinderQuantity)/(IBDE_MaxValue-IBDE_MinValue) END END
+					WHEN a.IBD_SYSTEM='GMSG' AND b.[IBDE_TAG_SITE] =3 THEN CASE WHEN isnumeric(I_Value3)=0 THEN 0 ELSE CASE WHEN(I_Value3-IBDE_MinValue)<0 THEN 0 ELSE ((I_Value3-IBDE_MinValue)*IBDE_CylinderQuantity)/(IBDE_MaxValue-IBDE_MinValue) END END
+					WHEN a.IBD_SYSTEM='GMSG' AND b.[IBDE_TAG_SITE] =4 THEN CASE WHEN isnumeric(I_Value4)=0 THEN 0 ELSE CASE WHEN(I_Value4-IBDE_MinValue)<0 THEN 0 ELSE ((I_Value4-IBDE_MinValue)*IBDE_CylinderQuantity)/(IBDE_MaxValue-IBDE_MinValue) END END
+					WHEN a.IBD_SYSTEM='GMSG' AND b.[IBDE_TAG_SITE] =5 THEN CASE WHEN isnumeric(I_Value5)=0 THEN 0 ELSE CASE WHEN(I_Value5-IBDE_MinValue)<0 THEN 0 ELSE ((I_Value5-IBDE_MinValue)*IBDE_CylinderQuantity)/(IBDE_MaxValue-IBDE_MinValue) END END
+					ELSE e.IDD_ONLINE_INVENTORY_AMT
+		END) IDD_ONLINE_INVENTORY_AMT,
+		B.IBDE_CylinderQuantity,
+		e.IDD_INVENTORY_AMT,
+		a.IBD_BOOKING_LIMIT,
+		a.IBD_FEED_AMT,
+		(CASE 
+			WHEN A.IBD_SYSTEM='GMSG' AND A.IBD_TYPE='鋼瓶' THEN ROUND(e.IDD_CLAC_AVG*b.IBDE_SplitProprtion,2) 
+			ELSE e.IDD_CLAC_AVG 
+		 END)  AS IDD_CLAC_AVG,--平均用量
+		(CASE 
+			WHEN e.IDD_CLAC_AVG*b.IBDE_SplitProprtion=0 THEN 999 
+			ELSE ROUND(b.IBDE_CylinderQuantity/(e.IDD_CLAC_AVG*b.IBDE_SplitProprtion),2) 
+		 END) IDD_ReplacementCycle,--更換週期
+		e.IDD_PUT_IN_AMT,
+		e.IDD_CHANGE_AMT,
+		A.IBD_AUTO_ORDER,
+		e.IDD_SEQ_ID
+FROM Inventory_BaseData a INNER JOIN SDP_Base_Org c on a.IBD_PLANT=c.SBO_PLANT
+left join Inventory_BaseData_E b on a.IBD_SEQ_ID=b.IBD_SEQ_ID
+left join( --當日氣櫃壓力/重量
+	SELECT I_Plant,I_Tag1,I_Value1,I_Tag2,I_Value2,I_Tag3,I_Value3,I_Tag4,I_Value4,I_Tag5,I_Value5 FROM IDMC_Table 
+	WHERE I_Date=@strDate AND I_Type='E'
+	GROUP BY  I_Plant,I_Tag1,I_Value1,I_Tag2,I_Value2,I_Tag3,I_Value3,I_Tag4,I_Value4,I_Tag5,I_Value5
+	) d on c.SBO_PLANT2=d.I_Plant AND b.IBDE_TagNO1=d.I_Tag1
+INNER JOIN(
+	SELECT * FROM Inventory_DailyData WHERE IDD_DailyDate=@strDate 
+	 )e on a.IBD_SEQ_ID=e.IBD_SEQ_ID
+left join [dbo].[Inventory_ReceiptMapping] irm on a.IBD_SEQ_ID=irm.IBD_SEQ_ID
+GROUP BY a.IBD_SEQ_ID,
+		c.SBO_PLANT2,
+		a.IBD_SYSTEM,
+		a.IBD_SHOP,
+		(case when IBD_MATERIAL2 is null or IBD_MATERIAL2='' then IBD_MATERIAL else IBD_MATERIAL2 end),
+		a.IBD_BOM_NO,
+		A.IBD_TYPE,
+		irm.IRM_MTRL_NO,
+		A.IBD_FAB_UNIT,
+		A.IBD_MAX_LIMIT,
+		A.IBD_UNIT,
+		b.IBDE_CalcGroup,
+		B.IBDE_CylinderQuantity,
+		e.IDD_INVENTORY_AMT,
+		a.IBD_BOOKING_LIMIT,
+		a.IBD_FEED_AMT,
+		ROUND(e.IDD_CLAC_AVG*b.IBDE_SplitProprtion,2),
+		IDD_CLAC_AVG,
+		CASE WHEN e.IDD_CLAC_AVG*b.IBDE_SplitProprtion=0 THEN 999 ELSE ROUND(b.IBDE_CylinderQuantity/(e.IDD_CLAC_AVG*b.IBDE_SplitProprtion),2) END,
+		e.IDD_PUT_IN_AMT,
+		e.IDD_CHANGE_AMT,
+		A.IBD_AUTO_ORDER,
+		e.IDD_SEQ_ID
+) T 
+		
+WHERE  SBO_PLANT2=@strPlant
+)

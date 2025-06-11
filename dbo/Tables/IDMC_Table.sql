@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[IDMC_Table] (
+    [I_ROWID]        UNIQUEIDENTIFIER CONSTRAINT [DF_IDMC_Table_I_ROWID] DEFAULT (newid()) NOT NULL,
+    [I_No]           VARCHAR (50)     NULL,
+    [I_Type]         NVARCHAR (1)     NULL,
+    [I_Date]         DATE             NOT NULL,
+    [I_Time]         TIME (0)         NOT NULL,
+    [I_Plant]        VARCHAR (10)     NOT NULL,
+    [I_Shop]         VARCHAR (50)     NOT NULL,
+    [I_Sysname]      VARCHAR (50)     NOT NULL,
+    [I_CName]        VARCHAR (50)     NOT NULL,
+    [I_Tag1]         VARCHAR (255)    NULL,
+    [I_Value1]       VARCHAR (255)    NULL,
+    [I_Tag2]         VARCHAR (255)    NULL,
+    [I_Value2]       VARCHAR (255)    NULL,
+    [I_Tag3]         VARCHAR (255)    NULL,
+    [I_Value3]       VARCHAR (255)    NULL,
+    [I_Tag4]         VARCHAR (255)    NULL,
+    [I_Value4]       VARCHAR (255)    NULL,
+    [I_Tag5]         VARCHAR (255)    NULL,
+    [I_Value5]       VARCHAR (255)    NULL,
+    [I_row_index]    VARCHAR (20)     NULL,
+    [I_Flag]         VARCHAR (10)     NULL,
+    [I_LD_Save_Time] VARCHAR (20)     NULL,
+    [I_LD_Flag]      VARCHAR (10)     NULL,
+    [M_SEQ_ID]       INT              NULL
+);
+

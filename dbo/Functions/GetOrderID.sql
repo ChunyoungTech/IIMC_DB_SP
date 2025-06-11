@@ -1,0 +1,9 @@
+﻿
+CREATE FUNCTION [dbo].[GetOrderID]()
+RETURNS nvarchar(20)
+AS
+BEGIN
+  DECLARE @OrderID nvarchar(20)
+  SELECT @OrderID= 'IIMC'+ CONVERT(VARCHAR(10),GETDATE(),112) + right('000' + ltrim(isnull(max(cast(right(CALLED_NO, 3) as int)),0)+1), 3) from SDP_VW_SRM_CALLED_ORDERS_GCIC_ALLOCATE where SUBSTRING(CALLED_NO, 5, 8)=CONVERT(VARCHAR(10),GETDATE(),112)
+  RETURN @OrderID
+END
