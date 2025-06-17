@@ -265,6 +265,7 @@
     <Build Include="dbo\Stored Procedures\sp_GetBom.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_Na2S.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_Na2S2O3.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB8_Chemical_Na2S.sql" />
     <Build Include="dbo\Stored Procedures\sp_AutoOrderAdd.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_NaOCl.sql" />
     <Build Include="dbo\Stored Procedures\sp_ReportDayAmount.sql" />
