@@ -300,6 +300,7 @@
     <Build Include="dbo\Stored Procedures\sp_kpi_Report.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_H2SO4.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_HCL.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB1_Chemical_HCL.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_NaCl.sql" />
     <Build Include="dbo\Stored Procedures\sp_mapp_1_day_larger_than_week.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB2_Chemical_NaOCl.sql" />
