@@ -255,6 +255,7 @@
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_DehydrationPolymer.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_CH3OH.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_FeCl2.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB8_Chemical_FeCl2.sql" />
     <Build Include="dbo\Stored Procedures\sp_GetAmountSq.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_anti_corrosion.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB7_Chemical_H2SO4.sql" />
