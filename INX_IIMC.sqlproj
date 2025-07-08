@@ -279,6 +279,7 @@
     <Build Include="dbo\Stored Procedures\sp_Daily_Amount_Calculate_FAB7.sql" />
     <Build Include="dbo\Stored Procedures\sp_ReportMonthFill.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOCl.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Get_Amount_FAB8_Chemical_NaOCl.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOH_F.sql" />
     <Build Include="dbo\Stored Procedures\sp_Get_Amount_FABC_Chemical_NaOH_water.sql" />
     <Build Include="dbo\Stored Procedures\sp_Daily_Insert_CIC_Table_FAB2.sql" />
